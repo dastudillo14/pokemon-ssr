@@ -16,7 +16,12 @@ const commonEngine = new CommonEngine();
 
 
 export async function netlifyCommonEngineHandler(request: Request, context: any): Promise<Response> {
-  return await render(commonEngine)
+  try {    
+    return await render(commonEngine)
+  } catch (error) {
+    console.log('Error en netlifyCommonEngineHandler')
+  }
+  return new Promise<Response>(res=>res);
 }
 /**
  * Example Express Rest API endpoints can be defined here.
