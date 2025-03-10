@@ -1,0 +1,22 @@
+<h1 class="text-3xl" >Listado de Pokemons</h1>
+<h2 class="text-xl">
+    Página actual
+</h2>
+<hr class="my-2">
+
+<!-- TODO POKEMON LIST -->
+<app-pokemon-list [pokemons]="pokemons()"></app-pokemon-list>
+ <!-- @if( !isLoading()){
+}@else{
+    <app-pokemon-list-skeleton></app-pokemon-list-skeleton>
+ } -->
+
+<!-- TODO POKEMON LIST ESKELETON -->
+
+<!-- TODO PAGINACION -->
+ <div class="flex justify-between">
+    <button class="mt-2 " >Anteriores</button>
+    <button class="mt-2 " >Siguientes</button>
+
+ </div>
+
