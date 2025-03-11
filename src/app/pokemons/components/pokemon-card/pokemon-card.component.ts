@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, effect, input } from '@angular/core';
 import { SimplePokemon } from '../../interfaces';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-card',
   standalone:true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './pokemon-card.component.html',
   styleUrl: './pokemon-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
