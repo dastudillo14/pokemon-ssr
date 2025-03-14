@@ -1,4 +1,4 @@
-<h1 class="text-3xl" >Listado de Pokemons</h1>
+<h1 class="text-3xl">Listado de Pokemons</h1>
 <h2 class="text-xl">
     Página actual :{{currentPage()}}
 </h2>
@@ -6,17 +6,17 @@
 
 <!-- TODO POKEMON LIST -->
 @if( !isLoading()){
-    <app-pokemon-list [pokemons]="pokemons()"></app-pokemon-list>
+<app-pokemon-list [pokemons]="pokemons()"></app-pokemon-list>
 }@else{
-    <app-pokemon-list-skeleton></app-pokemon-list-skeleton>
- } 
+<app-pokemon-list-skeleton></app-pokemon-list-skeleton>
+}
 
 <!-- TODO POKEMON LIST ESKELETON -->
 
 <!-- TODO PAGINACION -->
- <div class="flex justify-between">
-    <button (click)="loadPokemons(-1)" class="mt-2 " >Anteriores</button>
-    <button (click)="loadPokemons(+1)" class="mt-2 " >Siguientes</button>
+<div class="flex justify-between">
+    <button [routerLink]="['/pokemons/page/', currentPage()! -1 ]" [disabled]="currentPage() == 1"
+        class="mt-2 ">Anteriores</button>
+    <button [routerLink]="['/pokemons/page/', currentPage()! +1]" class="mt-2 ">Siguientes</button>
 
- </div>
-
+</div>
