@@ -39,12 +39,12 @@ export default class PokemonsComponent {
   public isLoading = signal(true);
 
   public loadPokemons(page = 0) {
-    const pageToLoad = this.currentPage()! + page;
+    
     this.isLoading.set(true)
-    this.pokemonService.getPokemons(pageToLoad)
+    this.pokemonService.getPokemons(page)
       .pipe(
-        //tap(() => this.router.navigate([], { queryParams: { page: pageToLoad } })),
-        tap(() => this.title.setTitle(`Pokemons de la página ${pageToLoad}`))
+        //tap(() => this.router.navigate([], { queryParams: { page: page } })),
+        tap(() => this.title.setTitle(`Pokemons de la página ${page}`))
       )
       .subscribe(r => {
         console.log(r[0]);
