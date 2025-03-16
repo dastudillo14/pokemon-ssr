@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { PokemonAPIResponse, PokemonDetail, SimplePokemon } from '../interfaces';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,23 @@ export class PokemonService {
   }
 
   public getPokemonById(id:string){
-    return this.httpClient.get<PokemonDetail>(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    return this.httpClient.get<PokemonDetail>(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
+  private handleError(error:HttpErrorResponse){
+    if( error.status == 0){
+      console.log('error ', error.error);
+    }else{
+      console.log(`backend error ${error.status}`, error.error)
+    }
+
+    const errorMessage = error.error ?? 'error';
+
+    return throwError(()=> new Error(errorMessage));
   }
 
 }
